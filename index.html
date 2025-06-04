@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>京剧演员张宸菲 - 官方网站</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 引入 Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
     <style>
         :root {
             --primary: #b32424;
@@ -59,7 +55,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><path d="M30,15 C35,15 40,17.5 40,25 C40,32.5 35,35 30,35 C25,35 20,32.5 20,25 C20,17.5 25,15 30,15 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/></svg>');
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www极客时间.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><path d="M30,15 C35,15 40,17.5 40,25 C40,32.5 35,35 30,35 C25,35 20,32.5 20,25 C20,17.5 25,15 30,15 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/></svg>');
             background-size: 60px 60px;
             opacity: 0.2;
         }
@@ -84,7 +80,7 @@
         }
         
         nav ul {
-            display: flex;
+            display:极客时间;
             list-style: none;
         }
         
@@ -108,7 +104,7 @@
         
         /* 主要内容区 */
         .hero {
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/200极客时间/svg" width="200" height="200" viewBox="0 0 200 200"><path d="M100,50 Q150,100 100,150 Q50,100 100,50 Z" fill="none" stroke="%23b32424" stroke-width="1" opacity="0.1"/></svg>');
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path d="M100,50 Q150,100 100,150 Q50,100 100,50 Z" fill="none" stroke="%23b32424" stroke-width="1" opacity="0.1"/></svg>');
             background-size: cover;
             padding: 80px 0;
             text-align: center;
@@ -146,7 +142,7 @@
             width: 80px;
             height: 4px;
             background: var(--primary);
-            border-radius: 2px;
+            border-radius: 2极客时间;
         }
         
         /* 个人介绍 */
@@ -359,7 +355,7 @@
             color: white;
             padding: 15px 0;
             z-index: 1000;
-            box-shadow: 0 -3px 10px rgba(0, 0, 0, 极客时间.2);
+            box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
         }
         
         .admin-container {
@@ -391,7 +387,7 @@
             color: var(--dark);
             border: none;
             padding: 8px 15px;
-            border-radius: 4极客时间;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
@@ -596,7 +592,7 @@
     
     <section class="hero">
         <div class="container">
-            <h1>京剧艺术传承者</h1>
+            <h1>京剧艺术传承者</极客时间>
             <p>北京京剧院青年老生演员</p>
         </div>
     </section>
@@ -638,7 +634,7 @@
             <h2 class="section-title">演出照片</h2>
             <div class="gallery editable" id="gallery-section">
                 <!-- 照片将由JS动态生成 -->
-                <button class="edit-btn">编辑</极客时间>
+                <button class="edit-btn">编辑</button>
                 <div class="edit-form">
                     <div class="upload-form">
                         <h4>上传演出照片</h4>
@@ -721,28 +717,9 @@
     </div>
 
     <script>
-        // Firebase 配置（替换为你的配置）
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-
-        // 初始化 Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const storage = firebase.storage();
-
-        // 全局变量
-        let galleryImages = [];
-        let bioImage = null;
-        let isAdminLoggedIn = false;
-
-        // 管理员登录功能
+        // 管理员功能 - 修复版
         document.addEventListener('DOMContentLoaded', function() {
+            // 修复：确保所有元素正确加载后再绑定事件
             const adminPanel = document.getElementById('admin-panel');
             const adminOverlay = document.getElementById('admin-overlay');
             const loginAdminBtn = document.getElementById('login-admin-btn');
@@ -750,88 +727,103 @@
             const adminStatusText = document.getElementById('admin-status-text');
             const loginBtn = document.getElementById('login-btn');
             const passwordInput = document.getElementById('admin-password');
-
-            // 管理员登录按钮事件
-            loginAdminBtn.addEventListener('click', function() {
-                adminPanel.style.display = 'block';
-                adminOverlay.style.display = 'block';
-                passwordInput.focus();
-            });
-
-            // 关闭管理员面板
-            adminOverlay.addEventListener('click', function() {
-                adminPanel.style.display = 'none';
-                adminOverlay.style.display = 'none';
-            });
-
-            // 登录功能
-            loginBtn.addEventListener('click', function() {
-                if (passwordInput.value === '2004') {
-                    isAdminLoggedIn = true;
-                    adminStatusText.textContent = '管理员已登录';
-                    adminStatusText.style.color = '#a1de93';
-                    loginAdminBtn.style.display = 'none';
-                    logoutAdminBtn.style.display = 'block';
-
-                    document.querySelectorAll('.editable').forEach(el => {
-                        el.classList.add('editable-active');
-                    });
-
-                    document.querySelectorAll('.edit-btn').forEach(btn => {
-                        btn.style.display = 'block';
-                    });
-
+            
+            // 存储上传的图片数据
+            let galleryImages = [];
+            let bioImage = null;
+            
+            // 修复：管理员登录按钮事件绑定
+            if (loginAdminBtn) {
+                loginAdminBtn.addEventListener('click', function() {
+                    adminPanel.style.display = 'block';
+                    adminOverlay.style.display = 'block';
+                    if (passwordInput) passwordInput.focus();
+                });
+            }
+            
+            // 修复：关闭管理员面板
+            if (adminOverlay) {
+                adminOverlay.addEventListener('click', function() {
                     adminPanel.style.display = 'none';
                     adminOverlay.style.display = 'none';
-                    passwordInput.value = '';
-                } else {
-                    alert('密码错误！请重新输入。');
-                    passwordInput.value = '';
-                    passwordInput.focus();
-                }
-            });
-
-            // 退出登录
-            logoutAdminBtn.addEventListener('click', function() {
-                isAdminLoggedIn = false;
-                adminStatusText.textContent = '管理员未登录';
-                adminStatusText.style.color = 'white';
-                loginAdminBtn.style.display = 'block';
-                logoutAdminBtn.style.display = 'none';
-
-                document.querySelectorAll('.editable').forEach(el => {
-                    el.classList.remove('editable-active');
                 });
-
-                document.querySelectorAll('.edit-btn').forEach(btn => {
-                    btn.style.display = 'none';
+            }
+            
+            // 修复：登录功能
+            if (loginBtn && passwordInput) {
+                loginBtn.addEventListener('click', function() {
+                    if(passwordInput.value === '2004') {
+                        // 登录成功
+                        adminStatusText.textContent = '管理员已登录';
+                        adminStatusText.style.color = '#a1de93';
+                        loginAdminBtn.style.display = 'none';
+                        logoutAdminBtn.style.display = 'block';
+                        
+                        document.querySelectorAll('.editable').forEach(el => {
+                            el.classList.add('editable-active');
+                        });
+                        
+                        adminPanel.style.display = 'none';
+                        adminOverlay.style.display = 'none';
+                        passwordInput.value = '';
+                        
+                        // 显示编辑按钮
+                        document.querySelectorAll('.edit-btn').forEach(btn => {
+                            btn.style.display = 'block';
+                        });
+                    } else {
+                        alert('密码错误！请重新输入。');
+                        passwordInput.value = '';
+                        passwordInput.focus();
+                    }
                 });
-
-                document.querySelectorAll('.edit-form').forEach(form => {
-                    form.style.display = 'none';
+            }
+            
+            // 修复：退出登录
+            if (logoutAdminBtn) {
+                logoutAdminBtn.addEventListener('click', function() {
+                    adminStatusText.textContent = '管理员未登录';
+                    adminStatusText.style.color = 'white';
+                    loginAdminBtn.style.display = 'block';
+                    logoutAdminBtn.style.display = 'none';
+                    
+                    document.querySelectorAll('.editable').forEach(el => {
+                        el.classList.remove('editable-active');
+                    });
+                    
+                    // 隐藏所有编辑按钮
+                    document.querySelectorAll('.edit-btn').forEach(btn => {
+                        btn.style.display = 'none';
+                    });
+                    
+                    // 关闭所有编辑表单
+                    document.querySelectorAll('.edit-form').forEach(form => {
+                        form.style.display = 'none';
+                    });
                 });
-            });
-
-            // 编辑按钮功能
+            }
+            
+            // 修复：编辑按钮功能
             document.querySelectorAll('.edit-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const form = this.nextElementSibling;
                     form.style.display = form.style.display === 'block' ? 'none' : 'block';
-
+                    
+                    // 填充现有内容
                     const sectionId = this.closest('.editable').id;
                     const sectionType = sectionId.split('-')[0];
-
-                    if (sectionType === 'bio') {
+                    
+                    if(sectionType === 'bio') {
                         const bioContent = document.getElementById('bio-content');
                         if (bioContent) {
                             document.getElementById('bio-edit').value = bioContent.innerText;
                         }
-                    } else if (sectionType === 'past') {
+                    } else if(sectionType === 'past') {
                         const pastList = document.getElementById('past-list');
                         if (pastList) {
                             document.getElementById('past-performances-edit').value = Array.from(pastList.querySelectorAll('.performance-item')).map(item => item.innerText).join('\n\n');
                         }
-                    } else if (sectionType === 'upcoming') {
+                    } else if(sectionType === 'upcoming') {
                         const upcomingList = document.getElementById('upcoming-list');
                         if (upcomingList) {
                             document.getElementById('upcoming-performances-edit').value = Array.from(upcomingList.querySelectorAll('.performance-item')).map(item => item.innerText).join('\n\n');
@@ -839,64 +831,97 @@
                     }
                 });
             });
-
-            // 保存功能（使用 Firestore）
+            
+            // 修复：保存功能
             document.querySelectorAll('.save-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const sectionType = this.getAttribute('data-section');
                     const form = this.closest('.edit-form');
-
-                    if (sectionType === 'bio') {
+                    
+                    if(sectionType === 'bio') {
                         const newContent = document.getElementById('bio-edit').value;
                         const bioContent = document.getElementById('bio-content');
                         if (bioContent) {
                             bioContent.innerText = newContent;
-                            saveToFirestore('bio', 'content', newContent);
+                            localStorage.setItem('bio-content', newContent);
                         }
-
+                        
                         // 保存个人照片
                         if (bioImage) {
-                            saveToFirestore('bio', 'image', bioImage);
+                            localStorage.setItem('bio-image', bioImage);
                             const bioImg = document.getElementById('bio-image');
                             if (bioImg) {
                                 bioImg.src = bioImage;
                             }
                         }
-                    } else if (sectionType === 'past-performances') {
+                    } else if(sectionType === 'past-performances') {
                         const newContent = document.getElementById('past-performances-edit').value;
-                        saveToFirestore('performances', 'past', newContent);
+                        localStorage.setItem('past-performances', newContent);
                         updatePerformanceList('past', newContent);
-                    } else if (sectionType === 'upcoming-performances') {
+                    } else if(sectionType === 'upcoming-performances') {
                         const newContent = document.getElementById('upcoming-performances-edit').value;
-                        saveToFirestore('performances', 'upcoming', newContent);
+                        localStorage.setItem('upcoming-performances', newContent);
                         updatePerformanceList('upcoming', newContent);
-                    } else if (sectionType === 'gallery') {
-                        saveToFirestore('gallery', 'images', JSON.stringify(galleryImages));
+                    } else if(sectionType === 'gallery') {
+                        // 保存画廊图片
+                        localStorage.setItem('gallery-images', JSON.stringify(galleryImages));
                         renderGallery();
                         alert('照片已保存！');
                     }
-
-                    form.style.display = 'none';
-                    if (sectionType !== 'gallery') {
+                    
+                    if (form) {
+                        form.style.display = 'none';
+                    }
+                    if(sectionType !== 'gallery') {
                         alert('内容已保存！');
                     }
                 });
             });
-
-            // 从 Firestore 加载数据
-            loadFromFirestore();
-
-            // 更新演出列表
+            
+            // 从本地存储加载数据
+            if(localStorage.getItem('bio-content')) {
+                const bioContent = document.getElementById('bio-content');
+                if (bio极客时间) {
+                    bioContent.innerText = localStorage.getItem('bio-content');
+                }
+            }
+            
+            // 加载个人照片
+            if(localStorage.getItem('bio-image')) {
+                bioImage = localStorage.getItem('bio-image');
+                const bioImg = document.getElementById('bio-image');
+                if (bioImg) {
+                    bioImg.src = bioImage;
+                }
+            }
+            
+            // 加载画廊图片
+            if(localStorage.getItem('gallery-images')) {
+                galleryImages = JSON.parse(localStorage.getItem('gallery-images'));
+                renderGallery();
+            }
+            
+            if(localStorage.getItem('past-performances')) {
+                updatePerformanceList('past', localStorage.getItem('past-performances'));
+            }
+            
+            if(localStorage.getItem('upcoming-performances')) {
+                updatePerformanceList('upcoming', localStorage.getItem('upcoming-performances'));
+            }
+            
+            // 更新演出列表的函数
             function updatePerformanceList(type, content) {
                 const listId = type === 'past' ? 'past-list' : 'upcoming-list';
                 const list = document.getElementById(listId);
                 if (!list) return;
-
+                
                 list.innerHTML = '';
+                
+                // 按段落分割内容
                 const items = content.split('\n\n');
-
+                
                 items.forEach(item => {
-                    if (item.trim()) {
+                    if(item.trim()) {
                         const div = document.createElement('div');
                         div.className = 'performance-item';
                         div.innerHTML = item.replace(/\n/g, '<br>');
@@ -904,23 +929,26 @@
                     }
                 });
             }
-
+            
             // 渲染画廊图片
             function renderGallery() {
                 const gallery = document.getElementById('gallery-section');
                 if (!gallery) return;
-
+                
+                // 移除现有的照片元素（保留编辑按钮和表单）
                 const photos = gallery.querySelectorAll('.photo');
                 photos.forEach(photo => {
                     if (!photo.classList.contains('edit-btn') && !photo.classList.contains('edit-form')) {
                         photo.remove();
                     }
                 });
-
+                
+                // 添加照片元素
                 galleryImages.forEach((img, index) => {
                     const photo = document.createElement('div');
                     photo.className = 'photo';
                     photo.innerHTML = `<img src="${img}" alt="演出照片">`;
+                    
                     const editBtn = gallery.querySelector('.edit-btn');
                     if (editBtn) {
                         gallery.insertBefore(photo, editBtn);
@@ -929,81 +957,115 @@
                     }
                 });
             }
-
+            
             // 图片上传功能
             function setupImageUpload(uploadAreaId, fileInputId, previewId, callback) {
                 const uploadArea = document.getElementById(uploadAreaId);
                 const fileInput = document.getElementById(fileInputId);
                 const previewContainer = document.getElementById(previewId);
-
-                uploadArea.addEventListener('click', () => fileInput.click());
-
+                
+                if (!uploadArea || !fileInput || !previewContainer) return;
+                
+                // 点击上传区域触发文件选择
+                uploadArea.addEventListener('click', () => {
+                    fileInput.click();
+                });
+                
+                // 文件选择处理
                 fileInput.addEventListener('change', (e) => {
                     const files = Array.from(e.target.files);
+                    
                     files.forEach(file => {
                         if (!file.type.match('image.*')) {
                             alert('请选择图片文件！');
                             return;
                         }
-
+                        
                         const reader = new FileReader();
+                        
                         reader.onload = (e) => {
                             const imageData = e.target.result;
+                            
+                            // 创建预览
                             const previewItem = document.createElement('div');
                             previewItem.className = 'preview-item';
                             previewItem.innerHTML = `
                                 <img src="${imageData}" alt="预览">
                                 <button class="delete-btn">×</button>
                             `;
+                            
+                            // 删除按钮事件
                             previewItem.querySelector('.delete-btn').addEventListener('click', () => {
                                 previewItem.remove();
-                                callback(imageData, false);
+                                
+                                if (callback) {
+                                    callback(imageData, false); // 删除图片
+                                }
                             });
+                            
                             previewContainer.appendChild(previewItem);
-                            callback(imageData, true);
+                            
+                            if (callback) {
+                                callback(imageData, true); // 添加图片
+                            }
                         };
+                        
                         reader.readAsDataURL(file);
                     });
+                    
+                    // 重置文件输入，允许再次选择相同文件
                     fileInput.value = '';
                 });
-
+                
                 // 拖放功能
                 uploadArea.addEventListener('dragover', (e) => {
                     e.preventDefault();
                     uploadArea.style.borderColor = '#b32424';
                 });
-                uploadArea.addEventListener('dragleave', () => uploadArea.style.borderColor = '#ccc');
+                
+                uploadArea.addEventListener('dragleave', () => {
+                    uploadArea.style.borderColor = '#ccc';
+                });
+                
                 uploadArea.addEventListener('drop', (e) => {
                     e.preventDefault();
                     uploadArea.style.borderColor = '#ccc';
+                    
+                    const files = Array.from(e.dataTransfer.files);
                     fileInput.files = e.dataTransfer.files;
+                    
+                    // 触发change事件
                     const event = new Event('change');
                     fileInput.dispatchEvent(event);
                 });
             }
-
-            // 设置图片上传
+            
+            // 设置个人照片上传
             setupImageUpload('bio-upload-area', 'bio-file-input', 'bio-preview', (imageData, isAdd) => {
                 if (isAdd) {
                     bioImage = imageData;
+                    // 只保留一张个人照片
                     const previewContainer = document.getElementById('bio-preview');
-                    previewContainer.innerHTML = '';
-                    const previewItem = document.createElement('div');
-                    previewItem.className = 'preview-item';
-                    previewItem.innerHTML = `
-                        <img src="${imageData}" alt="预览">
-                        <button class="delete-btn">×</button>
-                    `;
-                    previewItem.querySelector('.delete-btn').addEventListener('click', () => {
-                        previewItem.remove();
-                        bioImage = null;
-                    });
-                    previewContainer.appendChild(previewItem);
+                    if (previewContainer) {
+                        previewContainer.innerHTML = '';
+                        const previewItem = document.createElement('div');
+                        previewItem.className = 'preview-item';
+                        previewItem.innerHTML = `
+                            <img src="${imageData}" alt="预览">
+                            <button class="delete-btn">×</button>
+                        `;
+                        previewItem.querySelector('.delete-btn').addEventListener('click', () => {
+                            previewItem.remove();
+                            bioImage = null;
+                        });
+                        previewContainer.appendChild(previewItem);
+                    }
                 } else {
                     bioImage = null;
                 }
             });
-
+            
+            // 设置画廊照片上传
             setupImageUpload('gallery-upload-area', 'gallery-file-input', 'gallery-preview', (imageData, isAdd) => {
                 if (isAdd) {
                     galleryImages.push(imageData);
@@ -1012,49 +1074,6 @@
                 }
             });
         });
-
-        // 保存数据到 Firestore
-        function saveToFirestore(collection, doc, data) {
-            db.collection(collection).doc(doc).set({ data })
-                .then(() => console.log('数据保存成功'))
-                .catch(error => console.error('保存失败:', error));
-        }
-
-        // 从 Firestore 加载数据
-        function loadFromFirestore() {
-            // 加载个人介绍
-            db.collection('bio').doc('content').get().then(doc => {
-                if (doc.exists) {
-                    document.getElementById('bio-content').innerText = doc.data().data;
-                }
-            });
-            db.collection('bio').doc('image').get().then(doc => {
-                if (doc.exists) {
-                    bioImage = doc.data().data;
-                    document.getElementById('bio-image').src = bioImage;
-                }
-            });
-
-            // 加载画廊图片
-            db.collection('gallery').doc('images').get().then(doc => {
-                if (doc.exists) {
-                    galleryImages = JSON.parse(doc.data().data);
-                    renderGallery();
-                }
-            });
-
-            // 加载演出信息
-            db.collection('performances').doc('past').get().then(doc => {
-                if (doc.exists) {
-                    updatePerformanceList('past', doc.data().data);
-                }
-            });
-            db.collection('performances').doc('upcoming').get().then(doc => {
-                if (doc.exists) {
-                    updatePerformanceList('upcoming', doc.data().data);
-                }
-            });
-        }
     </script>
 </body>
 </html>
